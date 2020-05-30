@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'market/base.html' %}
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block content %}
+
+  {% if m %}
+  <div class="jumbotron" style="text-align:center">
+                  <div style="text-align:center" class="alert alert-success" role="alert"><h4 class="alert-heading">{{ m }} Added to Cart</h4>
+                  <p></p>
+                  <p class="mb-0"></p>
+                </div>
+                <h1 class="display-3">{{ n.name }}</h1>
+    <p class="lead">Rs {{ m.price }} </p>
+    <img src= /media/{{ m.img }} style="margin:auto;height:500px;" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="img">
+    <hr class="my-2">
+    <p>{{ m.desc }}</p>
+    <p class="lead">
+      <a href="{% url 'cart' m.pk %}"><button><i class="fa fa-shopping-cart" aria-hidden="true">Add to Cart</i></button></a>
+    </p>
+    
+  </div>
+  {% else %}
+  <div class="jumbotron" style="text-align:center">
+  <h1 class="display-3">{{ n.name }}</h1>
+    <p class="lead">Rs {{ n.price }} </p>
+    <img  style="margin:auto;height:500px;" src= /media/{{ n.img }} style="height:340px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="img">
+    <hr class="my-2">
+    <p>{{ n.desc }}</p>
+    <p class="lead">
+      <a href="{% url 'cart' n.pk %}"><button><i class="fa fa-shopping-cart" aria-hidden="true">Add to Cart</i></button></a>
+    </p>
+    
+  </div>
+  {% endif %}
+{% endblock %}

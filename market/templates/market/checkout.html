@@ -1,0 +1,35 @@
+{% extends 'market/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    p.description {
+     width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+</style>
+<div class="jumbotron">
+    <h1 class="display-3">Your Cart</h1>
+    <div class="row projects" style="margin-bottom:0px;">
+                {% for i in n %}
+                <div class="col-sm-6 item">
+                    <div class="row">
+                        {% if i.image %}
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src= /media/{{ i.image }}></a></div>
+                        {% else %}
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src= /media/kachraseth.jpg ></a></div>
+                        {% endif %}
+                        <div class="col">
+                            <h3 class="name">{{ i.name }}</h3>
+                            <p class="description">{{ i.date }}</p>
+                            <a href="{% url 'delete_cart' i.pk %}"><button  type="submit" class="btn btn-primary">Remove</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            
+</div>
+<div style="text-align:center;"><button type="submit" class="btn btn-primary">Checkout</button></div>
+{% endblock %}

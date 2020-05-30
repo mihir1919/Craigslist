@@ -1,0 +1,13 @@
+{% block body %}
+<div class="jumbotron">
+    <h1 class="display-3">Login</h1>
+    <p class="lead">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    </p>
+</div>
+    
+{% endblock  %}

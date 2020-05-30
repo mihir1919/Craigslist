@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'market/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron" style="text-align: center;background-color:rgb(250, 250, 250);margin-top: 40px;color: black;">
+  <h1 class="display-4">Search</h1>
+  <p class="lead">For items you want</p>
+  <hr class="my-2">
+  <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}  
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

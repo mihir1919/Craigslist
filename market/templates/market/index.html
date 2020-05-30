@@ -1,0 +1,57 @@
+{% extends 'market/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="projects-horizontal">
+        <div class="container"><div class="intro">
+    <h2 class="text-center">Buying &amp; Selling Goods</h2>
+    <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+</div>
+<style>
+    p.description {
+     width: 250px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+</style>
+    <form method="POST" action="/search/">
+    {% csrf_token %}
+        <div class="form-group"> 
+          <label for="">Search</label>
+          <input type="text"
+            class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+        </div><p>Press enter to Search</p>
+    </form>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+
+            <div class="row projects" style="margin-bottom:0px;margin-top:-54px">
+                {% for i in n %}
+                <div class="col-sm-6 item">
+                    <div class="row">
+                        {% if i.img %}
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" style="height:120px;width:240px;" src= /media/{{ i.img }}></a></div>
+                        {% else %}
+                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" style="height:120px;width:240px;" src=  media/black16.jpg ></a></div>
+                        {% endif %}
+                        <div class="col">
+                            <h3 class="name">{{ i.name }}</h3>
+                            <p class="description">{{ i.desc }}.</p>
+                            <a href="{% url 'item' i.pk %}">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            </div> 
+        </div>
+    </div>
+{% endblock %}
