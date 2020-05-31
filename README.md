@@ -1,5 +1,8 @@
 # craigslist
- Ecommerce Webapp
+ Ecommerce Webapp 
+Check it out on -> http://mcraig.herokuapp.com/
+
+OR
 
 Steps to run :-
 Also pip install whatever the terminal prompt that you don't have<br />
